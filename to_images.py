@@ -45,10 +45,10 @@ def region_of_interest(img, vertices):
 
 def mask(inp):
     path = os.path.dirname(__file__)
-    img_path = os.path.join(path, 'data/images/') + 'frame' + str(inp) + '.jpg'
+    img_path = os.path.join(path, 'data/testimages/') + 'frame' + str(inp) + '.jpg'
     output = os.path.join(path, 'data/modified/')
-    vertices = np.array([[(0, 360), (0, 210), (240, 200), (640, 210),
-                          (640, 360), (570, 360), (510, 310), (135, 310),
+    vertices = np.array([[(0, 360), (0, 220), (300, 210), (640, 240),
+                          (640, 360), (590, 360), (520, 310), (110, 310),
                           (30, 360)]], dtype=np.int32)
     img = mpimg.imread(img_path)
     masked = region_of_interest(img, vertices)
@@ -56,8 +56,14 @@ def mask(inp):
 
 
 if __name__ == '__main__':
+    
+    path = os.path.dirname(__file__)
+    inp = os.path.join(path, 'data/') + 'test.mp4'
+    output = os.path.join(path, 'data/testimages/')
+    images(inp, output)
+    
     p = Pool(4)
-    images = [x for x in range(0, 20400)]
+    images = [x for x in range(0, 10798)]
     for i, _ in enumerate(p.imap_unordered(mask, images), 1):
         sys.stderr.write('\rdone {0:%}'.format(i / len(images)))
     p.close()
