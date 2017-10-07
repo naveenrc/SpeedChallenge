@@ -10,5 +10,5 @@ Your deliverable is test.txt
 
 We will evaluate your test.txt using mean squared error. <10 is good. <5 is better. <3 is heart.
 
-## Used opencv, keras, python generators for keras.
-This project is done to experiment on computer vision
+# Used opencv, keras, python generators for keras, dense optical flow, sparse optical flow.
+*This project is done just to experiment on computer vision and get familiar with computer vision tools
